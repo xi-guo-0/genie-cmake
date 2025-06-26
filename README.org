@@ -1,0 +1,27 @@
+#+TITLE: Genie-CMake - CMake Build System for Qualcomm Genie
+
+* Overview
+This repository provides a *CMake-based build system* for Qualcomm's *Genie* demo, originally built with Makefiles.
+- Simplifies cross-platform compilation
+- Supports automatic dependency management.
+- Compatible with the original Genie codebase.
+
+* Prerequisites
+- *CMake 3.20+*
+- *C++20*
+- *Rust* (for =tokenizers_capi=)
+- Qualcomm QNN SDK (set =QNN_SDK_ROOT=)
+
+* Rust Library Dependency
+The =tokenizers_capi= library must be built separately via Rust:
+  #+BEGIN_SRC sh
+cargo build --target=<your-target-triple> --release
+  #+END_SRC
+
+* Build Instructions
+#+BEGIN_SRC sh
+cmake --preset=Android -DQNN_SDK_ROOT=/path/to/qnn-sdk -Dtokenizers_capi_PATH=/path/to/libtokenizers_capi.a && cmake --build --preset=Android
+#+END_SRC
+
+* Credits
+- Qualcomm for the original Genie code.
