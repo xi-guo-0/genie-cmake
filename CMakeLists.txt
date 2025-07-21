@@ -52,3 +52,7 @@ target_compile_definitions(
           SPILLFILL
           FMT_HEADER_ONLY)
 target_link_libraries(${PROJECT_NAME} PRIVATE tokenizers_capi)
+
+add_executable(genie-t2t-run
+               ${QNN_SDK_ROOT}/examples/Genie/genie-t2t-run/main.cpp)
+target_link_libraries(genie-t2t-run PUBLIC ${PROJECT_NAME})
